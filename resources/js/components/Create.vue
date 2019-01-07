@@ -20,6 +20,12 @@
                 <label for="inputPassword">Password</label>
               </div>
 
+
+              <div class="form-group">
+                <input type="file" class="form-control" name="file" @change="imageChanged">
+                <label for="inputPassword">Foto</label>
+              </div>
+
               <button class="btn btn-lg btn-primary " type="submit" v-on:click="addNewUser()">Save</button>
             </form>
 
@@ -35,7 +41,8 @@
 				name : '',
 				email : '',
 				password : '',
-				csrf_token : $('meta[name="csrf-token"]').attr('content')
+				csrf_token : $('meta[name="csrf-token"]').attr('content'),
+				image : ''
 			}
 		},mounted(){
 			this.addNewUser();
@@ -46,6 +53,7 @@
 					email: this.email,
 					password: this.password,
 					csrf_token:   this.csrf_token,
+					image: this.image,
 				} ).then(response => { 
 					
 					window.location.href = '/users';
@@ -53,7 +61,21 @@
 				}).catch(error => {
 					console.log(this.error);
 				});
+			},
+
+			imageChanged(e){
+				var fileReader = new FileReader();
+
+				fileReader.readAsDataURL(e.target.files[0])
+
+				fileReader.onload = (e) => {
+					this.image = e.target.result
+				}
+				
+				console.log(this.image);
 			}
+			
+
 		}
 	}
 </script>

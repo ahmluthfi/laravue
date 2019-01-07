@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
     public function index(){
-    	 $users = User::orderBy('id','DESC')->paginate(2);
+    	 $users = User::orderBy('id','DESC')->paginate(10);
 
     	 return response()->json($users);
     }
@@ -18,9 +18,24 @@ class UserController extends Controller
 
     	 $user = new User();
     	 
+    	 $explode = explode(',', $request->get('image'));
+    	 $decode = base64_decode($explode[1]);
+
+    	 if (str_contains($explode[0],'jpeg')) {
+    	 	$extension = 'jpg';
+    	 }else{
+    	 	$extension = 'png';
+    	 }
+
+    	 $filename = str_random().'.'.$extension;
+    	 $path = public_path().'/image/'.$filename;
+
+    	 file_put_contents($path, $decode);
+
     	 $user->name = $request->get('name');
     	 $user->email = $request->get('email');
     	 $user->password = bcrypt($request->get('password'));
+    	 $user->image = 'image/'.$filename;
     	 
     	 $user->save();
 

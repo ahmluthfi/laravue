@@ -23,7 +23,8 @@
 					<td>{{ user.name }}</td>
 					<td>{{ user.email }}</td>
 					<td>
-
+					<img v-bind:src="user.image" style="width:50">
+					
 					</td>
 					<td>
 						<a class="btn btn-sm btn-primary" v-on:click="editUser(user.id)">

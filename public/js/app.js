@@ -1793,13 +1793,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       name: '',
       email: '',
       password: '',
-      csrf_token: $('meta[name="csrf-token"]').attr('content')
+      csrf_token: $('meta[name="csrf-token"]').attr('content'),
+      image: ''
     };
   },
   mounted: function mounted() {
@@ -1813,12 +1820,25 @@ __webpack_require__.r(__webpack_exports__);
         name: this.name,
         email: this.email,
         password: this.password,
-        csrf_token: this.csrf_token
+        csrf_token: this.csrf_token,
+        image: this.image
       }).then(function (response) {
         window.location.href = '/users';
       }).catch(function (error) {
         console.log(_this.error);
       });
+    },
+    imageChanged: function imageChanged(e) {
+      var _this2 = this;
+
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this2.image = e.target.result;
+      };
+
+      console.log(this.image);
     }
   }
 });
@@ -1945,6 +1965,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -6329,7 +6350,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -6367,7 +6388,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -37752,6 +37773,16 @@ var render = function() {
           _c("label", { attrs: { for: "inputPassword" } }, [_vm._v("Password")])
         ]),
         _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "file", name: "file" },
+            on: { change: _vm.imageChanged }
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "inputPassword" } }, [_vm._v("Foto")])
+        ]),
+        _vm._v(" "),
         _c(
           "button",
           {
@@ -37976,7 +38007,12 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(user.email))]),
             _vm._v(" "),
-            _c("td"),
+            _c("td", [
+              _c("img", {
+                staticStyle: { width: "50" },
+                attrs: { src: user.image }
+              })
+            ]),
             _vm._v(" "),
             _c("td", [
               _c(
