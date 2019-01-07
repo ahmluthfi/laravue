@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<h2>
-			Users Listings
+			Create User
 		</h2>
 		    <form class="form-horizontal" v-on:submit.prevent="addNewUser()">
 
@@ -45,10 +45,10 @@
 				image : ''
 			}
 		},mounted(){
-			this.addNewUser();
+			//this.addNewUser();
 		}, methods: {
 			addNewUser() {
-				axios.post('/api/users/',{
+				axios.post('/api/users/simpan',{
 					name: this.name,
 					email: this.email,
 					password: this.password,
@@ -67,8 +67,8 @@
 				var fileReader = new FileReader();
 
 				fileReader.readAsDataURL(e.target.files[0])
-
 				fileReader.onload = (e) => {
+					console.log(e.target.result);
 					this.image = e.target.result
 				}
 				

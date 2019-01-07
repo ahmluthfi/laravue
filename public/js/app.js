@@ -1809,14 +1809,13 @@ __webpack_require__.r(__webpack_exports__);
       image: ''
     };
   },
-  mounted: function mounted() {
-    this.addNewUser();
+  mounted: function mounted() {//this.addNewUser();
   },
   methods: {
     addNewUser: function addNewUser() {
       var _this = this;
 
-      axios.post('/api/users/', {
+      axios.post('/api/users/simpan', {
         name: this.name,
         email: this.email,
         password: this.password,
@@ -1835,6 +1834,7 @@ __webpack_require__.r(__webpack_exports__);
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = function (e) {
+        console.log(e.target.result);
         _this2.image = e.target.result;
       };
 
@@ -37687,7 +37687,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("h2", [_vm._v("\n\t\t\tUsers Listings\n\t\t")]),
+    _c("h2", [_vm._v("\n\t\t\tCreate User\n\t\t")]),
     _vm._v(" "),
     _c(
       "form",
@@ -37832,7 +37832,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("h2", [_vm._v("\n\t\t\tUsers Listings\n\t\t")]),
+    _c("h2", [_vm._v("\n\t\t\tEdit User\n\t\t")]),
     _vm._v(" "),
     _c(
       "form",

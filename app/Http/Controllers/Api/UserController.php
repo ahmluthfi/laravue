@@ -14,11 +14,11 @@ class UserController extends Controller
     	 return response()->json($users);
     }
 
-    public function store(Request $request){
+    public function simpan(Request $request){
 
     	 $user = new User();
     	 
-    	 if ($request->get('image')) {
+    	 if (!empty($request->get('image'))) {
     	 	$explode = explode(',', $request->get('image'));
 	    	$decode = base64_decode($explode[1]);
 	    	
@@ -30,10 +30,10 @@ class UserController extends Controller
 
 	    	 $filename = str_random().'.'.$extension;
 	    	 $path = public_path().'/image/'.$filename;
-
 	    	 file_put_contents($path, $decode);	
     	 	
     	 	$image_save = 'image/'.$filename;
+    	 	$user->image = $image_save;
     	 }else{
     	 	$image_save = '';
     	 }
@@ -42,7 +42,7 @@ class UserController extends Controller
     	 $user->name = $request->get('name');
     	 $user->email = $request->get('email');
     	 $user->password = bcrypt($request->get('password'));
-    	 $user->image = $image_save;
+    	 
     	 
     	 $user->save();
 

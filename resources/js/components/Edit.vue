@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<h2>
-			Users Listings
+			Edit User
 		</h2>
 		    <form class="form-horizontal" v-on:submit.prevent="editUser()">
 
