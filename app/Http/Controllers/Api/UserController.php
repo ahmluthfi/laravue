@@ -18,24 +18,31 @@ class UserController extends Controller
 
     	 $user = new User();
     	 
-    	 $explode = explode(',', $request->get('image'));
-    	 $decode = base64_decode($explode[1]);
+    	 if ($request->get('image')) {
+    	 	$explode = explode(',', $request->get('image'));
+	    	$decode = base64_decode($explode[1]);
+	    	
+    	 	if (str_contains($explode[0],'jpeg')) {
+	    	 	$extension = 'jpg';
+	    	 }else{
+	    	 	$extension = 'png';
+	    	 }
 
-    	 if (str_contains($explode[0],'jpeg')) {
-    	 	$extension = 'jpg';
+	    	 $filename = str_random().'.'.$extension;
+	    	 $path = public_path().'/image/'.$filename;
+
+	    	 file_put_contents($path, $decode);	
+    	 	
+    	 	$image_save = 'image/'.$filename;
     	 }else{
-    	 	$extension = 'png';
+    	 	$image_save = '';
     	 }
 
-    	 $filename = str_random().'.'.$extension;
-    	 $path = public_path().'/image/'.$filename;
-
-    	 file_put_contents($path, $decode);
-
+    	 
     	 $user->name = $request->get('name');
     	 $user->email = $request->get('email');
     	 $user->password = bcrypt($request->get('password'));
-    	 $user->image = 'image/'.$filename;
+    	 $user->image = $image_save;
     	 
     	 $user->save();
 
@@ -52,7 +59,29 @@ class UserController extends Controller
     public function update($id, Request $request){
     	 $user = User::find($id);
     	 
-    	 $user->name = $request->get('name');
+    	
+    	 if ($request->get('image')) {
+    	 	 $explode = explode(',', $request->get('image'));
+	    	 $decode = base64_decode($explode[1]);
+    	 	if (str_contains($explode[0],'jpeg')) {
+	    	 	$extension = 'jpg';
+	    	 }else{
+	    	 	$extension = 'png';
+	    	 }
+
+	    	 $filename = str_random().'.'.$extension;
+	    	 $path = public_path().'/image/'.$filename;
+
+	    	 file_put_contents($path, $decode);	
+    	 	
+    	 	$image_save = 'image/'.$filename;
+
+	    	$user->image = $image_save;
+    	 }else{
+    	 	$image_save = '';
+    	 }
+
+    	 $user->name  = $request->get('name');
     	 $user->email = $request->get('email');
     	 
     	 $user->update();

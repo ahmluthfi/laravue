@@ -26,7 +26,7 @@
                 <label for="inputPassword">Foto</label>
               </div>
 
-              <button class="btn btn-lg btn-primary " type="submit" v-on:click="addNewUser()">Save</button>
+              <button class="btn btn-lg btn-primary " type="submit">Save</button>
             </form>
 
 	</div>

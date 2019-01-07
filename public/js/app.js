@@ -1880,6 +1880,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
@@ -1887,7 +1892,8 @@ __webpack_require__.r(__webpack_exports__);
       name: '',
       email: '',
       password: '',
-      csrf_token: $('meta[name="csrf-token"]').attr('content')
+      csrf_token: $('meta[name="csrf-token"]').attr('content'),
+      image: ''
     };
   },
   mounted: function mounted() {
@@ -1911,12 +1917,23 @@ __webpack_require__.r(__webpack_exports__);
       axios.put('/api/users/' + this.id, {
         name: this.name,
         email: this.email,
-        csrf_token: this.csrf_token
+        csrf_token: this.csrf_token,
+        image: this.image
       }).then(function (response) {
         window.location.href = '/users';
       }).catch(function (error) {
         console.log(_this2.error);
       });
+    },
+    imageChanged: function imageChanged(e) {
+      var _this3 = this;
+
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this3.image = e.target.result;
+      };
     }
   }
 });
@@ -6369,7 +6386,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -37785,15 +37802,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "button",
-          {
-            staticClass: "btn btn-lg btn-primary ",
-            attrs: { type: "submit" },
-            on: {
-              click: function($event) {
-                _vm.addNewUser()
-              }
-            }
-          },
+          { staticClass: "btn btn-lg btn-primary ", attrs: { type: "submit" } },
           [_vm._v("Save")]
         )
       ]
@@ -37896,17 +37905,19 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "file", name: "file" },
+            on: { change: _vm.imageChanged }
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "inputPassword" } }, [_vm._v("Foto")])
+        ]),
+        _vm._v(" "),
         _c(
           "button",
-          {
-            staticClass: "btn btn-lg btn-primary ",
-            attrs: { type: "submit" },
-            on: {
-              click: function($event) {
-                _vm.updateUser()
-              }
-            }
-          },
+          { staticClass: "btn btn-lg btn-primary ", attrs: { type: "submit" } },
           [_vm._v("Update")]
         )
       ]
