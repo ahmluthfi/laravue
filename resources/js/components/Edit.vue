@@ -1,28 +1,40 @@
 <template>
 	<div class="container">
-		<h2>
+		  <h2>
 			Edit User
 		</h2>
-		    <form class="form-horizontal" v-on:submit.prevent="editUser()">
 
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Name" name="name" v-model="name">
-                <label for="inputPassword">Nama</label>
-              </div>
+		<div class="box">
+			
+		    <form role="form" v-on:submit.prevent="editUser()">
+			      <div class="box-body">
+			      	
 
-              <div class="form-group">
-                <input type="email" name="email" v-model="email" id="inputEmail" class="form-control" placeholder="Email address">
-                <label for="inputEmail">Email address</label>
-              </div>
+		              <div class="form-group">
+		                <label for="inputPassword">Nama</label>
+		                <input type="text" class="form-control" placeholder="Name" name="name" v-model="name">
+		              </div>
 
-              <div class="form-group">
-                <input type="file" class="form-control" name="file" @change="imageChanged">
-                <label for="inputPassword">Foto</label>
-              </div>
+		              <div class="form-group">
+		                <label for="inputEmail">Email address</label>
+		                <input type="email" name="email" v-model="email" id="inputEmail" class="form-control" placeholder="Email address">
+		              </div>
 
-              <button class="btn btn-lg btn-primary " type="submit">Update</button>
-              
+		              <div class="form-group">
+		                <label for="inputPassword">Foto</label>
+		                <input type="file" name="file" @change="imageChanged">
+		              </div>
+
+		              <button class="btn btn-lg btn-primary " type="submit">Update</button>
+		              
+
+			      </div>
+
+	      
             </form>
+
+	    </div>
+
 
 	</div>
 

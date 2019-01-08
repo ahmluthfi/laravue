@@ -1909,6 +1909,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
@@ -2006,6 +2018,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6416,7 +6433,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -6435,7 +6452,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -37864,94 +37881,104 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("h2", [_vm._v("\n\t\t\tEdit User\n\t\t")]),
     _vm._v(" "),
-    _c(
-      "form",
-      {
-        staticClass: "form-horizontal",
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            _vm.editUser()
+    _c("div", { staticClass: "box" }, [
+      _c(
+        "form",
+        {
+          attrs: { role: "form" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              _vm.editUser()
+            }
           }
-        }
-      },
-      [
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.name,
-                expression: "name"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text", placeholder: "Name", name: "name" },
-            domProps: { value: _vm.name },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+        },
+        [
+          _c("div", { staticClass: "box-body" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "inputPassword" } }, [
+                _vm._v("Nama")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.name,
+                    expression: "name"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", placeholder: "Name", name: "name" },
+                domProps: { value: _vm.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.name = $event.target.value
+                  }
                 }
-                _vm.name = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "inputPassword" } }, [_vm._v("Nama")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.email,
-                expression: "email"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              type: "email",
-              name: "email",
-              id: "inputEmail",
-              placeholder: "Email address"
-            },
-            domProps: { value: _vm.email },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "inputEmail" } }, [
+                _vm._v("Email address")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.email,
+                    expression: "email"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "email",
+                  name: "email",
+                  id: "inputEmail",
+                  placeholder: "Email address"
+                },
+                domProps: { value: _vm.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.email = $event.target.value
+                  }
                 }
-                _vm.email = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "inputEmail" } }, [
-            _vm._v("Email address")
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "inputPassword" } }, [
+                _vm._v("Foto")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "file", name: "file" },
+                on: { change: _vm.imageChanged }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-lg btn-primary ",
+                attrs: { type: "submit" }
+              },
+              [_vm._v("Update")]
+            )
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: { type: "file", name: "file" },
-            on: { change: _vm.imageChanged }
-          }),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "inputPassword" } }, [_vm._v("Foto")])
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-lg btn-primary ", attrs: { type: "submit" } },
-          [_vm._v("Update")]
-        )
-      ]
-    )
+        ]
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -38055,6 +38082,13 @@ var render = function() {
                 _c("td", [_vm._v(_vm._s(user.email))]),
                 _vm._v(" "),
                 _c("td", [
+                  _c("img", {
+                    staticStyle: { width: "50" },
+                    attrs: { src: user.image }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("td", [
                   _c(
                     "a",
                     {
@@ -38149,6 +38183,8 @@ var staticRenderFns = [
       _c("th", [_vm._v("Name")]),
       _vm._v(" "),
       _c("th", [_vm._v("Email")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Image")]),
       _vm._v(" "),
       _c("th", [_vm._v("Action")])
     ])
