@@ -9,8 +9,22 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
     public function index(){
-    	 $users = User::orderBy('id','DESC')->paginate(10);
 
+    	if (isset($_GET['page'])) {
+    		$page = $_GET['page'];
+    	}else{
+    		$page = 1;
+    	}
+    	
+    	$limit = 10;
+
+    	$no = (($page-1)*$limit)+1;
+
+    	 $users = User::orderBy('id','DESC')->paginate($limit);
+    	 foreach ($users as $key => $value) {
+    	 	$users[$key]['no'] = $no;
+    	 	$no++;
+    	 }
     	 return response()->json($users);
     }
 
