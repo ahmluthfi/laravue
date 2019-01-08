@@ -3,32 +3,36 @@
 		<h2>
 			Create User
 		</h2>
-		    <form class="form-horizontal" v-on:submit.prevent="addNewUser()">
+		<div class="box">
+		    <form role="form" v-on:submit.prevent="addNewUser()">
+			   <div class="box-body">
 
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Name" name="name" v-model="name">
-                <label for="inputPassword">Nama</label>
-              </div>
+	              <div class="form-group">
+	                <label for="inputPassword">Nama</label>
+	                <input type="text" class="form-control" placeholder="Name" name="name" v-model="name">
+	              </div>
 
-              <div class="form-group">
-                <input type="email" name="email" v-model="email" class="form-control" placeholder="Email address">
-                <label for="inputEmail">Email address</label>
-              </div>
+	              <div class="form-group">
+	                <label for="inputEmail">Email address</label>
+	                <input type="email" name="email" v-model="email" class="form-control" placeholder="Email address">
+	              </div>
 
-              <div class="form-group">
-                <input type="password" name="password" v-model="password" id="inputPassword" class="form-control" placeholder="Password">
-                <label for="inputPassword">Password</label>
-              </div>
+	              <div class="form-group">
+	                <label for="inputPassword">Password</label>
+	                <input type="password" name="password" v-model="password" id="inputPassword" class="form-control" placeholder="Password">
+	              </div>
 
 
-              <div class="form-group">
-                <input type="file" class="form-control" name="file" @change="imageChanged">
-                <label for="inputPassword">Foto</label>
-              </div>
+	              <div class="form-group">
+	                <label for="inputPassword">Foto</label>
+	                <input type="file" name="file" @change="imageChanged">
+	              </div>
 
-              <button class="btn btn-lg btn-primary " type="submit">Save</button>
+	              <button class="btn btn-lg btn-primary " type="submit">Save</button>
+
+        		</div>
             </form>
-
+        </div>
 	</div>
 
 </template>
